@@ -95,14 +95,6 @@ export class Presenter extends PureComponent<Props, State> {
             focus={tour || focus}
             depressedKeys={depressedKeys}
             toggledKeys={ModifierState.modifiers}
-            controls={
-              <Controls
-                onChangeView={handleChangeView}
-                onResetLesson={handleResetLesson}
-                onSkipLesson={handleSkipLesson}
-                onHelp={handleHelp}
-              />
-            }
             textInput={
               <Zoomer id="TextArea/Normal">
                 <TextArea
@@ -285,7 +277,6 @@ function NormalLayout({
   focus,
   depressedKeys,
   toggledKeys,
-  controls,
   textInput,
   tour,
 }: {
@@ -293,7 +284,6 @@ function NormalLayout({
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly toggledKeys: readonly string[];
-  readonly controls: ReactNode;
   readonly textInput: ReactNode;
   readonly tour: ReactNode;
 }) {
@@ -314,7 +304,6 @@ function NormalLayout({
           />
         </Zoomer>
       </div>
-      {controls}
       {tour}
     </Screen>
   );

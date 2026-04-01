@@ -1,96 +1,53 @@
 import {
   type AnyUser,
-  Avatar,
   type PageInfo,
   Pages,
   usePageData,
 } from "@keybr/pages-shared";
-import { Icon } from "@keybr/widget";
+import { Link as StaticLink } from "@keybr/widget";
 import { clsx } from "clsx";
-import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { NavLink } from "react-router";
 import * as styles from "./NavMenu.module.less";
-import { SubMenu } from "./SubMenu.tsx";
 import { ThemeSwitcher } from "./themes/ThemeSwitcher.tsx";
 
 export function NavMenu({ currentPath }: { readonly currentPath: string }) {
   const { publicUser } = usePageData();
   return (
-    <div className={styles.root}>
-      <MenuItem>
-        <AccountLink user={publicUser} />
-      </MenuItem>
+    <nav className={styles.root}>
+      <NavLink className={styles.logo} to={Pages.practice.path}>
+        typer.top
+      </NavLink>
 
-      <MenuItem>
-        <ThemeSwitcher />
-      </MenuItem>
+      <MenuItemLink page={Pages.practice} />
+      <MenuItemLink page={Pages.typingTest} />
+      <MenuItemLink page={Pages.help} />
 
-      <MenuItem>
-        <MenuItemLink page={Pages.practice} />
-      </MenuItem>
+      <div className={styles.spacer} />
 
-      <MenuItem>
-        <MenuItemLink page={Pages.profile} />
-      </MenuItem>
-
-      <MenuItem>
-        <MenuItemLink page={Pages.help} />
-      </MenuItem>
-
-      <MenuItem>
-        <MenuItemLink page={Pages.highScores} />
-      </MenuItem>
-
-      <MenuItem>
-        <MenuItemLink page={Pages.multiplayer} />
-      </MenuItem>
-
-      <MenuItem>
-        <MenuItemLink page={Pages.typingTest} />
-      </MenuItem>
-
-      <MenuItem>
-        <MenuItemLink page={Pages.layouts} />
-      </MenuItem>
-
-      <MenuItem>
-        <SubMenu currentPath={currentPath} />
-      </MenuItem>
-    </div>
-  );
-}
-
-function MenuItem({ children }: { readonly children: ReactNode }) {
-  return <div className={styles.item}>{children}</div>;
-}
-
-function AccountLink({ user }: { readonly user: AnyUser }) {
-  const { formatMessage } = useIntl();
-  return (
-    <NavLink
-      className={({ isActive }) =>
-        clsx(styles.accountLink, isActive && styles.isActive)
-      }
-      to={Pages.account.path}
-    >
-      <Avatar user={user.id != null ? user : null} size="large" />
-      <span className={styles.userName}>
-        {user.id != null
-          ? user.name
-          : formatMessage({
-              id: "t_Sing_In",
-              defaultMessage: "Sign-In",
-            })}
-      </span>
-    </NavLink>
+      <StaticLink
+        className={styles.localeLink}
+        href={Pages.intlPath(currentPath, "uk")}
+      >
+        UA
+      </StaticLink>
+      <StaticLink
+        className={styles.localeLink}
+        href={Pages.intlPath(currentPath, "en")}
+      >
+        EN
+      </StaticLink>
+      <ThemeSwitcher />
+      <MenuItemLink page={Pages.profile} />
+      <AccountLink user={publicUser} />
+    </nav>
   );
 }
 
 function MenuItemLink({
   page: {
     path,
-    link: { label, title, icon },
+    link: { label, title },
   },
 }: {
   readonly page: PageInfo;
@@ -104,8 +61,26 @@ function MenuItemLink({
       to={path}
       title={title && formatMessage(title)}
     >
-      <Icon className={styles.icon} shape={icon ?? ""} />
-      <span className={styles.label}>{formatMessage(label)}</span>
+      {formatMessage(label)}
+    </NavLink>
+  );
+}
+
+function AccountLink({ user }: { readonly user: AnyUser }) {
+  const { formatMessage } = useIntl();
+  return (
+    <NavLink
+      className={({ isActive }) =>
+        clsx(styles.accountLink, isActive && styles.isActive)
+      }
+      to={Pages.account.path}
+    >
+      {user.id != null
+        ? user.name
+        : formatMessage({
+            id: "t_Sing_In",
+            defaultMessage: "Sign-In",
+          })}
     </NavLink>
   );
 }

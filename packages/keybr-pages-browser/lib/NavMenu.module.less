@@ -1,64 +1,87 @@
 @import "@keybr/widget/lib/index.less";
 
 .root {
-  position: sticky;
-  inset-block-start: 0;
-  max-inline-size: 10rem;
-  box-shadow: var(--Surface__box-shadow);
-  backdrop-filter: var(--Surface__backdrop-filter);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  max-inline-size: 70rem;
+  block-size: 3.5rem;
+  margin-inline: auto;
+  padding-inline: 0;
 }
 
-.item + .item {
-  border-block-start: var(--separator-border);
+.logo {
+  margin-inline-end: 2rem;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .link {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  block-size: 2rem;
+  justify-content: center;
+  block-size: 2.25rem;
   padding-inline: 1rem;
-  padding-block: 0;
-  color: var(--text-color);
-  line-height: 2rem;
+  border-radius: 0.25rem;
+  color: var(--secondary);
+  font-size: 1rem;
   text-decoration: none;
 
   &.isActive {
     color: var(--text-color);
-    background-color: var(--primary-l1);
+  }
+
+  &:hover:not(.isActive) {
+    color: var(--text-color);
   }
 }
 
 .icon {
-  inline-size: 1rem;
-  block-size: 1rem;
-  fill: var(--secondary-f1);
+  display: none;
 }
 
 .label {
-  .text-truncate();
-  display: inline-block;
-  margin-inline-start: 0.5rem;
+  margin-inline-start: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.localeLink {
+  padding-inline: 0.25rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--text-color);
+  }
 }
 
 .accountLink {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-inline: 0;
-  padding-block: 1rem;
-  color: var(--text-color);
+  block-size: 2.25rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.25rem;
+  color: var(--secondary);
+  font-size: 1rem;
   text-decoration: none;
 
   &.isActive {
     color: var(--text-color);
-    background-color: var(--primary-l1);
+  }
+
+  &:hover:not(.isActive) {
+    color: var(--text-color);
   }
 }
 
 .userName {
   .text-truncate();
-  max-inline-size: 8rem;
-  text-align: center;
+  max-inline-size: 6rem;
+  margin-inline-start: 0.35rem;
 }

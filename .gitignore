@@ -3,6 +3,7 @@
 
 # Keys
 id_*
+client_secret_*
 
 # Compiled output
 packages/*/.types/
