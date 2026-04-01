@@ -1,21 +1,23 @@
-import { KeyboardOptions, Layout } from "@keybr/keyboard";
+import { KeyboardOptions, Language, Layout } from "@keybr/keyboard";
+import { getPageData } from "@keybr/pages-shared";
 import { Settings } from "@keybr/settings";
 import { ViewSwitch } from "@keybr/widget";
 import { views } from "./views.tsx";
 
-setDefaultLayout(window.navigator.language);
+const localeToLayout: Record<string, { language: Language; layout: Layout }> = {
+  uk: { language: Language.UK, layout: Layout.UK_UA },
+  en: { language: Language.EN, layout: Layout.EN_US },
+};
 
-function setDefaultLayout(localeId: string) {
-  const layout = Layout.findLayout(localeId);
-  if (layout != null) {
-    Settings.addDefaults(
-      KeyboardOptions.default()
-        .withLanguage(layout.language)
-        .withLayout(layout)
-        .save(new Settings()),
-    );
-  }
-}
+const { locale } = getPageData() ?? { locale: "uk" };
+const { language, layout } = localeToLayout[locale] ?? localeToLayout["uk"];
+
+Settings.addDefaults(
+  KeyboardOptions.default()
+    .withLanguage(language)
+    .withLayout(layout)
+    .save(new Settings()),
+);
 
 export function PracticePage() {
   return <ViewSwitch views={views} />;

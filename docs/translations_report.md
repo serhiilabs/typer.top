@@ -661,11 +661,9 @@ Untranslated: 110 messages, 2568 words
 
 # Ukrainian
 
-Translated: 341 messages, 4746 words
+Translated: 342 messages, 4749 words
 
-Untranslated: 1 messages, 3 words
-
-* *Key sounds only*
+Untranslated: 0 messages, 0 words
 
 # Vietnamese
 
