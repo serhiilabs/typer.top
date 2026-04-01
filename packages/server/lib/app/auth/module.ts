@@ -17,9 +17,12 @@ export class AuthModule implements Module {
   @provides({ id: AdapterFactory, name: "google", singleton: true })
   provideGoogleAdapter(
     @inject("canonicalUrl") canonicalUrl: string,
-  ): AdapterFactory {
-    const clientId = Env.getString("AUTH_GOOGLE_CLIENT_ID");
-    const clientSecret = Env.getString("AUTH_GOOGLE_CLIENT_SECRET");
+  ): AdapterFactory | null {
+    const clientId = Env.getString("AUTH_GOOGLE_CLIENT_ID", "");
+    const clientSecret = Env.getString("AUTH_GOOGLE_CLIENT_SECRET", "");
+    if (!clientId || !clientSecret) {
+      return null;
+    }
     const scope = ["email", "profile"].join(" ");
     return new (class GoogleAdapterFactory extends AdapterFactory {
       makeAdapter(redirectUri: string): AbstractAdapter {

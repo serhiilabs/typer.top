@@ -1,6 +1,6 @@
-import { Button, Field, FieldList, Icon, Para } from "@keybr/widget";
-import { mdiFacebook, mdiGoogle, mdiMicrosoft } from "@mdi/js";
-import { FormattedMessage, useIntl } from "react-intl";
+import { Button, Field, FieldList, Icon } from "@keybr/widget";
+import { mdiGoogle } from "@mdi/js";
+import { useIntl } from "react-intl";
 
 const providers: readonly {
   readonly id: string;
@@ -11,16 +11,6 @@ const providers: readonly {
     id: "google",
     name: "Google",
     icon: mdiGoogle,
-  },
-  {
-    id: "microsoft",
-    name: "Microsoft",
-    icon: mdiMicrosoft,
-  },
-  {
-    id: "facebook",
-    name: "Facebook",
-    icon: mdiFacebook,
   },
 ];
 
@@ -49,13 +39,6 @@ export function OAuthLoginForm() {
           </Field>
         ))}
       </FieldList>
-
-      <Para>
-        <FormattedMessage
-          id="account.socialForm.description"
-          defaultMessage="Sign-in with your preferred social network. We respect your privacy and promise to never spam your wall, friends, or e-mail."
-        />
-      </Para>
     </>
   );
 }

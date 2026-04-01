@@ -4,7 +4,7 @@ import {
   type UserDetails,
 } from "@keybr/pages-shared";
 import { AccountSection } from "./AccountSection.tsx";
-import { useAccountActions, useSignInActions } from "./actions.ts";
+import { useAccountActions } from "./actions.ts";
 import { SignInSection } from "./SignInSection.tsx";
 
 export function AccountPage() {
@@ -12,7 +12,7 @@ export function AccountPage() {
   if (user != null) {
     return <AccountSectionWithActions user={user} publicUser={publicUser} />;
   } else {
-    return <SignInSectionWithActions />;
+    return <SignInSection />;
   }
 }
 
@@ -24,9 +24,4 @@ function AccountSectionWithActions(props: {
   return (
     <AccountSection user={user} publicUser={publicUser} actions={actions} />
   );
-}
-
-function SignInSectionWithActions() {
-  const { actions } = useSignInActions();
-  return <SignInSection actions={actions} />;
 }

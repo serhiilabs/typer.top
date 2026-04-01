@@ -1,3 +1,13 @@
+# typer.top - Ukrainian typing trainer
+
+Fork of [keybr.com](https://github.com/aradzie/keybr.com) by Aliaksandr Radzivanovich. Modified 2025.
+
+Open-source adaptive typing trainer focused on Ukrainian language with ЙЦУКЕН keyboard layout.
+
+---
+
+## Original README
+
 [![CI](https://github.com/aradzie/keybr.com/actions/workflows/ci.yml/badge.svg)](https://github.com/aradzie/keybr.com/actions/workflows/ci.yml)
 
 # [keybr.com](https://www.keybr.com/) is not (just) a typing test

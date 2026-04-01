@@ -126,19 +126,6 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
               />
             </Field>
           </FieldList>
-
-          <Para>
-            <FormattedMessage
-              id="account.emailForm.description"
-              defaultMessage={
-                "Simple sign-in that does not use passwords. " +
-                "Just enter your e-mail address, and we will send you a login link. " +
-                "Go to your inbox, click the link to create a new account or to open an existing account for the e-mail address given. " +
-                "The link is temporary and expires in a few hours. " +
-                "To sign-in again later, enter the same e-mail address, and we will send a new link for the same account."
-              }
-            />
-          </Para>
         </>
       );
   }
