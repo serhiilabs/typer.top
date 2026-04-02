@@ -1,0 +1,27 @@
+FROM node:24 AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+COPY packages/ ./packages/
+COPY root/ ./root/
+COPY scripts/ ./scripts/
+COPY webpack.config.js webpack-manifest.js tsconfig.json lage.config.cjs ./
+
+RUN npm ci
+RUN npm run compile
+RUN npm run build
+
+FROM node:24
+
+WORKDIR /app
+
+COPY --from=build /app/ ./
+
+ENV NODE_ENV=production
+ENV DATABASE_CLIENT=sqlite
+ENV DATA_DIR=/data
+
+EXPOSE 3000 3001
+
+CMD ["npm", "run", "start-docker"]
