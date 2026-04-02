@@ -167,9 +167,8 @@ export namespace Pages {
       {
         name: "description",
         content: defineMessage({
-          id: "page.help.meta.description",
-          defaultMessage:
-            "Learn how the adaptive typing algorithm works, discover tips for improving your speed and accuracy, and get started with touch typing.",
+          id: "page.help.description",
+          defaultMessage: "The instructions for using this application.",
         }),
       },
     ],
@@ -197,9 +196,8 @@ export namespace Pages {
       {
         name: "description",
         content: defineMessage({
-          id: "page.highScores.meta.description",
-          defaultMessage:
-            "Global leaderboard of fastest typists. See top typing speeds, compare your results, and compete for the highest WPM score.",
+          id: "page.highScores.description",
+          defaultMessage: "The high score table for the fastest users.",
         }),
       },
     ],
@@ -227,9 +225,8 @@ export namespace Pages {
       {
         name: "description",
         content: defineMessage({
-          id: "page.multiplayer.meta.description",
-          defaultMessage:
-            "Race against other typists in real time. Challenge friends or random opponents in online typing speed competitions.",
+          id: "page.multiplayer.description",
+          defaultMessage: "Online multiplayer type racing game.",
         }),
       },
     ],
@@ -257,9 +254,8 @@ export namespace Pages {
       {
         name: "description",
         content: defineMessage({
-          id: "page.typingTest.meta.description",
-          defaultMessage:
-            "Measure your typing speed in WPM and accuracy with a quick test. Choose from real book passages or random words.",
+          id: "page.typingTest.description",
+          defaultMessage: "Typing speed and accuracy test.",
         }),
       },
     ],
@@ -287,9 +283,8 @@ export namespace Pages {
       {
         name: "description",
         content: defineMessage({
-          id: "page.layouts.meta.description",
-          defaultMessage:
-            "Compare keyboard layouts side by side - QWERTY, Dvorak, Colemak, AZERTY, and more. Find the best layout for your language.",
+          id: "page.layouts.description",
+          defaultMessage: "Comparison charts of keyboard layouts.",
         }),
       },
     ],
