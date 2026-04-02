@@ -27,7 +27,7 @@ test("render sign-in fragment", () => {
     </PageDataContext.Provider>,
   );
 
-  isNotNull(r.queryByText("Anonymous User", { exact: false }));
+  isNotNull(r.queryByText("Google", { exact: false }));
   isNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
@@ -72,7 +72,7 @@ test("render account fragment", () => {
     </PageDataContext.Provider>,
   );
 
-  isNull(r.queryByText("Anonymous User", { exact: false }));
+  isNull(r.queryByText("Google", { exact: false }));
   isNotNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
