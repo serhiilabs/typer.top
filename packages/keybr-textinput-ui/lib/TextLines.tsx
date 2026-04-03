@@ -54,7 +54,7 @@ export const TextLines = memo(function TextLines({
           settings={settings}
           chars={chars}
           className={className}
-          style={settings.font.cssProperties}
+          style={{}}
         />
       </LineTemplate>
     ) : (
@@ -63,7 +63,7 @@ export const TextLines = memo(function TextLines({
         settings={settings}
         chars={chars}
         className={className}
-        style={settings.font.cssProperties}
+        style={{}}
       />
     ),
   );
